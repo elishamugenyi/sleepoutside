@@ -7,7 +7,9 @@ export function qs(selector, parent = document) {
 
 // retrieve data from localstorage
 export function getLocalStorage(key) {
-  return JSON.parse(localStorage.getItem(key));
+  const data = localStorage.getItem(key);//added this one to ensure getlocalStorage function returns an array if no cart items exist or not.
+  return data ? JSON.parse(data) : null; //return an empty array if no data is found
+  //return JSON.parse(localStorage.getItem(key));
 }
 // save data to local storage
 export function setLocalStorage(key, data) {
